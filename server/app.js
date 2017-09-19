@@ -14,6 +14,14 @@ module.exports.app = app;
 // Set what we are listening on.
 app.set('port', 3000);
 
+// Connect to database
+db.connect(err => {
+  if (err) {
+    return err;
+  }
+  console.log('Connected to database');
+});
+
 // Logging and parsing
 app.use(morgan('dev'));
 app.use(parser.json());
@@ -29,4 +37,3 @@ if (!module.parent) {
   app.listen(app.get('port'));
   console.log('Listening on', app.get('port'));
 }
-
