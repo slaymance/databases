@@ -22,7 +22,7 @@
 
 app = {
 
-  server: 'http://127.0.0.1:3000/classes/messages/',
+  server: 'http://127.0.0.1:3000/classes/messages',
 
   init: function() {
     // Get username
@@ -56,7 +56,7 @@ app = {
   renderMessage: function(message) {
     var $user = $('<div>', {class: 'user'}).text(message.username);
     var $text = $('<div>', {class: 'text'}).text(message.text);
-    var $message = $('<div>', {class: 'chat', 'data-id': message.id }).append($user, $text);
+    var $message = $('<div>', {class: 'chat', 'data-id': message.objectId }).append($user, $text);
     return $message;
   },
 
@@ -96,7 +96,6 @@ app = {
       data: JSON.stringify(message),
       contentType: 'application/json',
       success: function(json) {
-        console.log(json);
         message.objectId = json.id;
         app.displayMessage(message);
       },
