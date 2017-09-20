@@ -43,8 +43,9 @@ app = {
     e.preventDefault();
 
     var message = {
-      username: app.username,
-      text: app.$text.val()
+      username: 'Dream team',
+      text: app.$text.val(),
+      room: 'main'
     };
 
     app.$text.val('');
@@ -92,7 +93,7 @@ app = {
     $.ajax({
       type: 'POST',
       url: app.server,
-      data: message,
+      data: JSON.stringify(message),
       contentType: 'application/json',
       success: function(json) {
         console.log(json);
