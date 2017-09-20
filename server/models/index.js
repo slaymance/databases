@@ -32,7 +32,7 @@ module.exports = {
         if (err) {
           return err;
         } 
-        promiseArray.push(db.query(`SELECT MAX(id) FROM messages`, [], (err, result) => {
+        promiseArray.push(db.query('SELECT MAX(id) FROM messages', [], (err, result) => {
           if (err) {
             return err;
           }
